@@ -43,7 +43,7 @@ jobs:
 
   e2e:
     needs: setup
-    runs-on: ubuntu-latest
+    runs-on: codebuild-Opennextjs-netlify-test-${{ github.run_id }}-${{ github.run_attempt }}
     strategy:
       fail-fast: false
       matrix:
@@ -112,7 +112,7 @@ jobs:
 
   test:
     needs: setup
-    runs-on: ${{ matrix.os }}
+    runs-on:  codebuild-Opennextjs-netlify-test-${{ github.run_id }}-${{ github.run_attempt }}
     strategy:
       fail-fast: false
       matrix:
@@ -179,7 +179,7 @@ jobs:
   smoke:
     if: always()
     needs: setup
-    runs-on: ubuntu-latest
+    runs-on:  codebuild-Opennextjs-netlify-test-${{ github.run_id }}-${{ github.run_attempt }}
     strategy:
       fail-fast: false
       matrix:
@@ -233,7 +233,7 @@ jobs:
       matrix:
         version: ${{ fromJson(needs.setup.outputs.matrix) }}
 
-    runs-on: ubuntu-latest
+    runs-on:  codebuild-Opennextjs-netlify-test-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
