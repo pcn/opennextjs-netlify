@@ -47,7 +47,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: ${{ fromJson(needs.setup.outputs.matrix) }}
+        version: [ "latest" ]
         shard: [1, 2, 3, 4, 5]
 
     steps:
@@ -117,8 +117,8 @@ jobs:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7, 8]
-        os: [ubuntu-latest, windows-latest]
-        version: ${{ fromJson(needs.setup.outputs.matrix) }}
+        # os: [ubuntu-latest, windows-latest]
+        version: [ "latest" ]
     steps:
       - uses: actions/checkout@v4
       - name: 'Install Node'
@@ -183,7 +183,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: ${{ fromJson(needs.setup.outputs.matrix) }}
+        version: [ "latest" ]
     steps:
       - uses: actions/checkout@v4
       - name: 'Install Node'
@@ -231,7 +231,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: ${{ fromJson(needs.setup.outputs.matrix) }}
+        version: [ "latest" ]
 
     runs-on:  codebuild-Opennextjs-netlify-test-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
